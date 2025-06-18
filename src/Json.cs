@@ -13,8 +13,8 @@ namespace Kisetsu.Utils {
         /// <returns>A dictionary containing the deserialized data.</returns>
         public static Dictionary<string, T> Load<T>(string path) => File.Exists(path) ?
         JsonConvert.DeserializeObject<Dictionary<string, T>>(File.ReadAllText(path)) ??
-        new Dictionary<string, T>() :
-        new Dictionary<string, T>();
+        [] :
+        [];
 
         /// <summary>
         /// Serializes a dictionary and saves it to a JSON file.
