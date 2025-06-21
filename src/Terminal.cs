@@ -1,4 +1,6 @@
-﻿namespace Kisetsu.Utils {
+﻿using System.Runtime.CompilerServices;
+
+namespace Kisetsu.Utils {
     /// <summary>
     /// Provides utility methods for interacting with the console, including input and message display.
     /// </summary>
@@ -95,5 +97,31 @@
         /// </summary>
         /// <param name="message">The message to write.</param>
         public static void Write(string message) => Console.Write(message);
+
+
+        /// <summary>
+        /// Logs a message to the console with contextual information such as time, file name, member name, and line number.
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        /// <param name="lineNumber">The line number in the source file at which the method is called. Automatically supplied by the compiler.</param>
+        /// <param name="filePath">The full path of the source file that contains the caller. Automatically supplied by the compiler.</param>
+        /// <param name="memberName">The name of the method or property from which this method is called. Automatically supplied by the compiler.</param>
+        public static void Log(string message,
+        [CallerLineNumber] int lineNumber = 0,
+        [CallerFilePath] string filePath = "",
+        [CallerMemberName] string memberName = "") {
+
+            Write("[", ConsoleColor.White);
+            Write($"{DateTime.Now:HH:mm:ss}", ConsoleColor.DarkGray);
+            Write(" :: ", ConsoleColor.White);
+            Write($"{Path.GetFileName(filePath)}", ConsoleColor.Yellow);
+            Write(" :: ", ConsoleColor.White);
+            Write($"{memberName}()", ConsoleColor.Cyan);
+            Write(" :: ", ConsoleColor.White);
+            Write($"Line {lineNumber}", ConsoleColor.Magenta);
+            Write("] ", ConsoleColor.White);
+            WriteLine(message, ConsoleColor.Gray);
+        }
+
     }
 }

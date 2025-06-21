@@ -5,24 +5,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Kisetsu.Utils</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
 	<Authors>Dharshik</Authors>  
     <Company>Kisetsu Productions</Company>
     <Description>A lightweight and modular utility library for .NET applications. Includes console I/O helpers, hashing algorithms, and JSON file utilities—perfect for CLI tools and quick scaffolding.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Kisetsu15/Kisetsu.Utils</RepositoryUrl>
-    <PackageTags>utils;hash;json;console;cli;terminal;sha</PackageTags>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageTags>utils;hash;json;console;cli;terminal;sha;string</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <OutputType>Library</OutputType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>utils_icon.png</PackageIcon>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\Utils\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -30,6 +24,14 @@
 
   <ItemGroup>
     <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="utils_icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
