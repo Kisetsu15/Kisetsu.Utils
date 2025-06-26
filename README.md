@@ -1,6 +1,6 @@
 # Kisetsu.Utils
 
-A lightweight and modular C# utility library offering common helper functions for console interaction, hashing, string manipulation, and JSON file operations.
+A lightweight and modular C# utility library offering common helper functions for console interaction, hashing, string manipulation, AES encryption / decryption and JSON file operations.
 
 ---
 
@@ -9,10 +9,13 @@ A lightweight and modular C# utility library offering common helper functions fo
 - **📚 StringExtensions**
   - Flexible character stripping by mode or character set.
   - Supports removal of substrings, alphanumerics, symbols, and whitespace.
+- **🔑 AES**
+  - Provides AES encryption and decryption utilities using a passphrase and salt.
+  - Generates a cryptographically secure random salt.
 
 - **🧮 Hash**
-  - SHA-1, SHA-256, and SHA-512 hashing for any string input.
-  - Clean, lowercase hex output for consistency.
+  - SHA-1, SHA-256, and SHA-512 hashing for any string and stream input.
+  - Outputs string or byte array with exception handing.
 
 - **📂 Json**
   - Load and save JSON files to/from `Dictionary<string, T>` using Newtonsoft.Json.
@@ -47,7 +50,7 @@ using Kisetsu.Utils;
 string clean = "Hello, World!".Strip(StripMode.Alphanumeric); // => "HelloWorld"
 
 // Compute hash
-string sha1 = Hash.Sha1("password123");
+string sha1 = Hash.Compute("password123", Algorithm.SHA1);
 
 // JSON I/O
 var data = Json.Load<int>("settings.json");
@@ -55,6 +58,11 @@ Json.Save("backup.json", data);
 
 // Colored log
 Terminal.Log("Initialized successfully");
+
+// AES encryption/decryption
+var salt = AES.GenerateSalt();
+string encrypted = AES.Encrypt("Hello World","mySecretPassphrase", salt);
+string decrypted = AES.Decrypt(encrypted, "mySecretPassphrase");
 ```
 
 ---
@@ -93,6 +101,7 @@ Kisetsu.Utils/
 ├── Hash.cs
 ├── Json.cs
 ├── StringExtensions.cs
+├── AES.cs
 └── Terminal.cs
 ```
 
@@ -100,7 +109,7 @@ Kisetsu.Utils/
 
 ## 📝 License
 
-MIT License — feel free to use, modify, and distribute.
+MIT License.
 
 ---
 
